@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SharedServiceService } from '../shared-service.service';
 import { Post } from './post';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { User } from '../authentication/user';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -10,6 +11,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 })
 export class PostsComponent implements OnInit {
   post:Post | any;
+ 
   constructor(private route:ActivatedRoute,private service:SharedServiceService) { }
 
   ngOnInit(): void {

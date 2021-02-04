@@ -13,7 +13,7 @@ import { User } from './user';
 })
 export class AuthenticationComponent implements OnInit {
   form: FormGroup;
-
+  
   constructor(private formBuilder:FormBuilder,private service:AuthenticationService,private router:Router) { 
     this.form = this.formBuilder.group({
      username: [''],
@@ -27,8 +27,9 @@ export class AuthenticationComponent implements OnInit {
     
       this.service.login(this.form.value).subscribe(res => {
         console.log('User is login!')
-        this.router.navigate(['/postt'])
-      })
+       // this.router.navigate(['/postt']),
 
+      })
+  //  console.log(this.cUser);
   }
 }

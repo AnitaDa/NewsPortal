@@ -30,11 +30,10 @@ export class PostListComponent implements OnInit {
     })
   }
  getPost(postId:number){
-  this.service.getById("Post",postId)
-  .subscribe(data=>
-   this.post=data
-   )
-   console.log(this.post);
-  }
+  this.service.gtid("Post",postId)
+  .subscribe(res=>{
+    this.post=res;
+  })
+  console.log(this.post.title);
 }
-
+}

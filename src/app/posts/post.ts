@@ -3,6 +3,7 @@ export class Post {
        public postId:number,
        public title:string,
       public  dateTime:Date,
-       public content:string
+       public content:string,
+       public autor:string
     ){}
 }

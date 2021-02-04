@@ -27,6 +27,11 @@ export class SharedServiceService {
      catchError(this.errorHandler)
    )
   }
+  gtid(controller:string,Id:number): Observable<any> {
+    return this.http.get<any>(this.url+controller+'/'+Id)
+    .pipe(
+      catchError(this.errorHandler)
+    )}
   add(obj:any,controller:string): Observable<any> {
     return this.http.post<any>(this.url+controller,obj, this.httpOptions)
     .pipe(
