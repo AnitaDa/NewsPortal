@@ -16,31 +16,61 @@ export class SharedServiceService {
     })}
   constructor(private http:HttpClient) { }
 
-  get(controller:string,filter?:string){
-    if(filter!=null)
-    return this.http.get<any[]>(this.url+controller+'?title='+filter);
-    return this.http.get<any[]>(this.url+controller);
-  }
-   getById(controller:string,Id:number){
-   return this.http.get(this.url+controller+'/'+Id)
-   .pipe(
-     catchError(this.errorHandler)
-   )
+  get(controller:string,adminId?:number):Observable<Post[]>{
+    //if(filter!==null)
+    //return this.http.get<Post[]>(this.url+controller+'?title='+filter);
+    //console.log(adminId);
+   // if(adminId!==0)
+   // return this.http.get<Post[]>(this.url+controller+'?administratorId='+adminId);
+  //  if(filter=='' && filter==0)
+   // return this.http.get<Post[]>(this.url+controller+'?title='+filter+'?administratorId='+adminId);
+   // return this.http.get<Post[]>(this.url+controller);
+    if(adminId!=0){
+      return this.http.get<Post[]>(this.url+controller+'?administratorId='+ adminId)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandler)
+      );
+    }
+    else{
+      return this.http.get<Post[]>(this.url+controller)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandler)
+      );
+    }
   }
   gtid(controller:string,Id:number): Observable<any> {
     return this.http.get<any>(this.url+controller+'/'+Id)
     .pipe(
       catchError(this.errorHandler)
     )}
-  add(obj:any,controller:string): Observable<any> {
-    return this.http.post<any>(this.url+controller,obj, this.httpOptions)
+  add(obj:any,controller:string): Observable<Post> {
+      return this.http.post<Post>(this.url+controller+'/', JSON.stringify(obj), this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandler)
+      );
+     console.log(obj);
+  }
+  addAdminPost(administratorId:number,postId:number,controller:string): Observable<Post> {
+    return this.http.post<Post>(this.url+controller+"/AdminPost", {administratorId,postId})
     .pipe(
+      retry(1),
       catchError(this.errorHandler)
-    )}
+    );
+}
   delete(Id:number,controller:string){
     return this.http.delete<any>(this.url+controller+'/'+Id).pipe(
       tap(pp=>console.log('Delete with id=${Id}')),
     )
+  }
+  update(controller:string,Id: number, obj:any): Observable<Post> {
+    return this.http.put<Post>(this.url+controller+'/' + Id, JSON.stringify(obj), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandler)
+    );
   }
   errorHandler(error:any) {
     let errorMessage = '';

@@ -13,26 +13,21 @@ export class AuthenticationService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })}
+ 
   constructor(private http: HttpClient) { }
-  login(log:any): Observable<any>{
+   login(userr:any): Observable<any>{
 
-    return this.http.post<any>(this.url+'Authenticate',log,this.httpOptions)
+    return this.http.post<any>(this.url+"Authenticate",JSON.stringify(userr), this.httpOptions)
     .pipe(map(user => {
       if (user){
-        user.authdata = window.btoa(log.username + ':' + log.password);
+        user.authdata = window.btoa(user.userName +':'+ user.password);
         localStorage.setItem('currentUser', JSON.stringify(user));
-       
       }
-
       return user;
     }));
   }
-  logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-}
 getLoggedUser(): Observable<User>{
-  return this.http.get<User>(this.url)
+  return this.http.get<User>(this.url+'GetLoggedUser')
   .pipe(
     retry(1),
     catchError(this.errorHandler)

@@ -2,8 +2,9 @@ export class Post {
     public constructor(
        public postId:number,
        public title:string,
-      public  dateTime:Date,
+      public  postDate:Date,
        public content:string,
-       public autor:string
+       public author:string,
+       public administratorId:number
     ){}
 }

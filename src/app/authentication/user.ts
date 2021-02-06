@@ -1,6 +1,9 @@
 export class User {
     constructor(
-        public Email:string,
-        public UserName:string
+        public email:string,
+        public userName:string,
+        public lozinkaHash:string,
+        public lozinkaSalt:string,
+        public administratorId:number
     ){}
 }
