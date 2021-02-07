@@ -17,14 +17,6 @@ export class SharedServiceService {
   constructor(private http:HttpClient) { }
 
   get(controller:string,adminId?:number):Observable<Post[]>{
-    //if(filter!==null)
-    //return this.http.get<Post[]>(this.url+controller+'?title='+filter);
-    //console.log(adminId);
-   // if(adminId!==0)
-   // return this.http.get<Post[]>(this.url+controller+'?administratorId='+adminId);
-  //  if(filter=='' && filter==0)
-   // return this.http.get<Post[]>(this.url+controller+'?title='+filter+'?administratorId='+adminId);
-   // return this.http.get<Post[]>(this.url+controller);
     if(adminId!=0){
       return this.http.get<Post[]>(this.url+controller+'?administratorId='+ adminId)
       .pipe(
@@ -71,7 +63,9 @@ export class SharedServiceService {
       retry(1),
       catchError(this.errorHandler)
     );
-  }
+  
+}
+
   errorHandler(error:any) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

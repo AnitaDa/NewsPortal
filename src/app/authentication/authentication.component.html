@@ -1,7 +1,7 @@
 
 
 <p *ngIf="!isLogged()">
-<button style="float: right; margin:10px 65px;background-color: white;" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Login</button>
+<button style="float: right; margin:10px 65px;background-color: white;color: rgb(134, 0, 105);" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Login</button>
 </p>
 <p *ngIf="isLogged()">
 <button style="float: right; margin:10px 40px;" type="button" class="btn btn-danger" (click)="logout()" >Logout</button>
@@ -23,7 +23,7 @@
               <label for="password" class="col-form-label" >Password:</label>
               <input type="text" class="form-control" id="password" formControlName="password">
             </div>
-            <button type="button" class="btn btn-danger"  type="submit">Login</button>
+            <button style="background-color:  rgb(134, 0, 105);" type="button" class="btn btn-danger"  type="submit">Login</button>
           </form>
         </div>
         <div class="modal-footer">

@@ -9,13 +9,13 @@ import { SharedServiceService } from './shared-service.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { PostAddEditComponent } from './posts/post-add-edit/post-add-edit.component';
 import { BasicAuthInterceptor } from './helper/basic-auth.interceptor';
 import { FilterPipe } from './filter.pipe';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DateFormatPipe } from './date-format.pipe';
 
 
 @NgModule({
@@ -24,7 +24,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     PostListComponent,
     AuthenticationComponent,
     PostAddEditComponent,
-    FilterPipe
+    FilterPipe,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,

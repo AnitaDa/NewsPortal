@@ -32,11 +32,7 @@ export class PostListComponent implements OnInit {
       this.posts=data;
     })
   }
- // search(){
-   // this.posts=this.posts.filter(res=>{
-   //   return res.title.toLocaleLowerCase().match(this.title.toLocaleUpperCase());
-    //})
-  //}
+
   isLogged(): boolean{
     if (JSON.parse(localStorage.getItem('currentUser')!) != null){
       return true;
