@@ -3,8 +3,8 @@ export class Post {
        public postId:number,
        public title:string,
       public  postDate:Date,
-       public content:string,
-       public author:string,
-       public administratorId:number
+       public content:string
+       //public author:string,
+       //public administratorId:number
     ){}
 }

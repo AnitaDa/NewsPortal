@@ -12,7 +12,7 @@ export class SharedServiceService {
   url="https://localhost:5001/api/";
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json; charset=utf-8'
     })}
   constructor(private http:HttpClient) { }
 
@@ -57,8 +57,8 @@ export class SharedServiceService {
       tap(pp=>console.log('Delete with id=${Id}')),
     )
   }
-  update(controller:string,Id: number, obj:any): Observable<Post> {
-    return this.http.put<Post>(this.url+controller+'/' + Id, JSON.stringify(obj), this.httpOptions)
+  update(obj:any,controller:string,Id:number): Observable<Post> {
+    return this.http.put<Post>(this.url+controller+'/' + Id,JSON.stringify(obj), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.errorHandler)

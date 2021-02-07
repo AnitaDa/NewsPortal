@@ -82,6 +82,12 @@ export class PostAddEditComponent implements OnInit {
   get formFields() { return this.form.controls; }
   
   submitForm(){
+    let post: Post = {
+      postId:this.postId,
+      title:this.form.get(this.title)?.value,
+      content: this.form.get(this.content)?.value,
+      postDate:this.currentDate
+    };
     this.form.patchValue({
       postDate:this.currentDate
     });
@@ -91,7 +97,7 @@ export class PostAddEditComponent implements OnInit {
       this.form.patchValue({
         postId:this.postId
       });
-      this.service.update("Post",this.postId,this.form.value).subscribe((res:Post) => {
+      this.service.update(post,"Post",this.postId).subscribe((res:Post) => {
         this.newPost=res,
         window.alert('Post update!');
         this.addAdminPost();
