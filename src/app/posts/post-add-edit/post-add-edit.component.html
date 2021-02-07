@@ -1,8 +1,7 @@
 <!--navbar-->
 <p *ngIf="isLogged()">
-  <button *ngIf="!isEdit()" style="margin-left: 20px;" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addOrDelete" data-bs-whatever="@mdo" >Add new post</button>
+  <button *ngIf="!isEdit()" style="margin-left: 40px;width: 72%; height: 40%;background-color: rgb(0, 126, 148);color: white;" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addOrDelete" data-bs-whatever="@mdo" >Add new post</button>
   <button *ngIf="isEdit()" style="float: right;" type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addOrDelete" data-bs-whatever="@mdo" >Edit post</button>
- 
 </p>
 <div class="modal fade" id="addOrDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -23,11 +22,11 @@
             <label for="message-text" class="col-form-label">Content:</label>
             <textarea class="form-control" id="message-text" formControlName="content" ></textarea>
           </div>
-          <button type="submit"  class="btn btn-primary">Submit</button>
+          <button style="background-color:  rgb(0, 126, 148);" type="submit"  class="btn btn-primary">Submit</button>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button style="background-color: rgb(134, 0, 105);" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

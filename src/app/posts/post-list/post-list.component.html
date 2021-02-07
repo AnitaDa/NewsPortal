@@ -1,18 +1,21 @@
+<div class="navBar"> 
 <div>
-  <button *ngIf="isLogged()" type="button" class="btn btn-warning" (click)="getAllPost(currentUser.administratorId)" >My news</button>
-  <button *ngIf="isLogged()" type="button" class="btn btn-warning" (click)="getAllPost(0)" >All news</button>
+  <button  style="margin-left: 40px;width:35%;background-color: rgb(134, 0, 105);" *ngIf="isLogged()" type="button" class="btn btn-danger" (click)="getAllPost(currentUser.administratorId)" >My news</button>
+  <button style="margin-left: 40px;width: 35%;background-color: rgb(134, 0, 105);" *ngIf="isLogged()" type="button" class="btn btn-danger" (click)="getAllPost(0)" >All news</button>
+  <app-post-add-edit></app-post-add-edit>
 </div>
-<div style="margin: 20px;"> 
-  <div ><h3 style="background-color: red;padding:20px;color:silver">News <input #search  class="form-control form-control-lg" type="search" placeholder="Search"  aria-label=".form-control-lg example" [(ngModel)]="searchTerm" /></h3></div>
+<div style="margin: 40px;"> 
+  <div ><h2 style="background-color:rgb(134, 0, 105);z-index: -1;padding:20px;color:white">News <input #search  class="form-control form-control-lg" type="search" placeholder="Search"  aria-label=".form-control-lg example" [(ngModel)]="searchTerm" /></h2></div>
 <div>
+</div>
 <table  class="table">
   <tbody>
-    <tr (click)="getPost(post.postId)"  style="border: 1px solid red; border-radius: 25px; margin: 10px" *ngFor="let post of posts | filter:searchTerm" >
-      <td>
+    <tr (click)="getPost(post.postId)"  style="border: 1px solid wheat; border-radius: 25px; margin: 10px" *ngFor="let post of posts | filter:searchTerm" >
+      <td style="background-color: rgb(0, 0, 0);opacity:0.9">
         <a>
-        <h4 style="color: red;"><b>{{post.title}}</b></h4>
-        <p style="color: black;">{{post.content}}</p></a>
-        <button data-toggle="modal" data-target="#exampleModalCenter"  type="button" class="btn btn-danger">More...</button>
+        <h4 style="color: rgb(0, 126, 148);opacity: 3.0;z-index: 1"><b>{{post.title}}</b></h4>
+        <p style="color: rgb(255, 255, 255);">{{post.content}}</p></a>
+        <button style="background-color:rgb(134, 0, 105);color: white;" data-toggle="modal" data-target="#exampleModalCenter"  type="button" class="btn btn-light" >More...</button>
       </td>
     </tr>
    
@@ -24,7 +27,7 @@
 <div  class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
-      <div style="background-color: red;" *ngIf="post" class="modal-header">
+      <div style="background-color: rgb(0, 130, 134);" *ngIf="post" class="modal-header">
         <app-post-add-edit [post]="post" [edit]="true"></app-post-add-edit>
         <h5 style="color:white" class="modal-title" id="exampleModalLongTitle">{{post.title}}</h5>
         <p *ngIf="post">{{post.author}}</p>
@@ -33,9 +36,18 @@
         <h6 *ngIf="post">{{post.content}}</h6>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <button style="background-color: rgb(134, 0, 105);" type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
-
+<script>
+  $(document).scroll(function() {
+  var y = $(this).scrollTop();
+  if (y > 1000) {
+    $('.navBar').fadeIn();
+  } else {
+    $('.navBar').fadeOut();
+  }
+});
+</script>
