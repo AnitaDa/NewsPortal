@@ -20,7 +20,7 @@ export class PostAddEditComponent implements OnInit {
   
   currentDate = new Date();
   //@Input() post:Post;
-    edit:boolean;
+
    newPost:Post;
    editPost:Post;
    administratorId:number;
@@ -41,12 +41,13 @@ export class PostAddEditComponent implements OnInit {
   this.fillForm();
   }
   fillForm(){
+    console.log(this.postId);
   this.service.gtid("Post",this.postId).subscribe(data=>{
     this.editPost=data;
     this.form.controls[this.title].setValue(this.editPost.title),
   this.form.controls[this.content].setValue(this.editPost.content);
   })
-  
+ 
   }
   resetForm(){
     this.form = this.formBuilder.group({
@@ -69,9 +70,7 @@ export class PostAddEditComponent implements OnInit {
    })}
   }
   isEdit(){
-  if(this.edit)
-  return true;
-  return false;
+  
   }
   isLogged(): boolean{
     if (JSON.parse(localStorage.getItem('currentUser')!) != null){
@@ -86,12 +85,14 @@ export class PostAddEditComponent implements OnInit {
       postId:this.postId,
       title:this.form.get(this.title)?.value,
       content: this.form.get(this.content)?.value,
-      postDate:this.currentDate
+      postDate:this.currentDate,
+      author:'',
+      administratorId:this.currentUser.administratorId
     };
     this.form.patchValue({
       postDate:this.currentDate
     });
-    console.log(this.postId);
+    console.log(post);
     //editovanje
     if(this.postId>0){
       this.form.patchValue({

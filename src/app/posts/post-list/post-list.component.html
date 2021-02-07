@@ -16,8 +16,8 @@
         <a>
         <h4 style="color: rgb(0, 126, 148);opacity: 3.0;z-index: 1"><b>{{post.title}}</b></h4>
         <p style="color: rgb(255, 255, 255);">{{post.content}}</p></a>
-        <!--<div data-dismiss="modal"><app-post-add-edit [post]="post" [edit]="true"></app-post-add-edit></div> -->
-       <button><a [routerLink]="['/posts',post.postId]">Edit</a></button>
+        <!--<div data-dismiss="modal"><app-post-add-edit  [edit]="true"></app-post-add-edit></div>-->
+      <button class="btn btn-light"  style="background-color:rgb(134, 0, 105);color: white;" [routerLink]="['/posts',post.postId]"> Edit</button>
         <button style="background-color:rgb(134, 0, 105);color: white;" data-toggle="modal" data-target="#exampleModalCenter"  type="button" class="btn btn-light" >More...</button>
       </td>
     </tr>

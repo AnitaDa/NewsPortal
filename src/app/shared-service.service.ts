@@ -16,9 +16,9 @@ export class SharedServiceService {
     })}
   constructor(private http:HttpClient) { }
 
-  get(controller:string,adminId?:number):Observable<Post[]>{
+  get(controller:string,adminId?:number):Observable<any[]>{
     if(adminId!=0){
-      return this.http.get<Post[]>(this.url+controller+'?administratorId='+ adminId)
+      return this.http.get<any[]>(this.url+controller+'?administratorId='+ adminId)
       .pipe(
         retry(1),
         catchError(this.errorHandler)
@@ -57,8 +57,8 @@ export class SharedServiceService {
       tap(pp=>console.log('Delete with id=${Id}')),
     )
   }
-  update(obj:any,controller:string,Id:number): Observable<Post> {
-    return this.http.put<Post>(this.url+controller+'/' + Id,JSON.stringify(obj), this.httpOptions)
+  update(obj:any,controller:string,Id:number): Observable<any> {
+    return this.http.put<any>(this.url+controller+'/' + Id,JSON.stringify(obj), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.errorHandler)
