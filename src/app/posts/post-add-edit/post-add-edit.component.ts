@@ -89,12 +89,11 @@ export class PostAddEditComponent implements OnInit {
       author:'',
       administratorId:this.currentUser.administratorId
     };
-    this.form.patchValue({
-      postDate:this.currentDate
-    });
-    console.log(post);
+   
+    
     //editovanje
     if(this.postId>0){
+      console.log(post)
       this.form.patchValue({
         postId:this.postId
       });
@@ -107,6 +106,9 @@ export class PostAddEditComponent implements OnInit {
       })
     }
     else{    //dodavanje posta
+      this.form.patchValue({
+        postDate:this.currentDate
+      });
     this.service.add(this.form.value,"Post").subscribe((res:Post) => {
       this.newPost=res,
       window.alert('Post created!');
