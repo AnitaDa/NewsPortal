@@ -59,15 +59,15 @@ export class PostAddEditComponent implements OnInit {
   }
   
   addAdminPost(){
-    if(this.postId>0){
-      this.service.addAdminPost(this.currentUser.administratorId,this.postId,"Post").subscribe(res=>{
-        window.alert('AdminPost created!');
-     })
-    }
-    else{
+    //if(this.postId>0){
+     // this.service.addAdminPost(this.currentUser.administratorId,this.postId,"Post").subscribe(res=>{
+      //  window.alert('AdminPost created!');
+     //})
+    //}
+   // else{
     this.service.addAdminPost(this.currentUser.administratorId,this.newPost.postId,"Post").subscribe(res=>{
       window.alert('AdminPost created!');
-   })}
+   })//}
   }
   
   isLogged(): boolean{
@@ -90,20 +90,20 @@ export class PostAddEditComponent implements OnInit {
    
     
     //editovanje
-    if(this.postId>0){
-      console.log(post)
-      this.form.patchValue({
-        postId:this.postId
-      });
-      this.service.update(post,"Post",this.postId).subscribe((res:Post) => {
-        this.newPost=res,
-        window.alert('Post update!');
-        this.addAdminPost();
-        this.resetForm();
-        window.location.reload();
-      })
-    }
-    else{    //dodavanje posta
+   // if(this.postId>0){
+     // console.log(post)
+      //this.form.patchValue({
+     //   postId:this.postId
+     // });
+      //this.service.update(post,"Post",this.postId).subscribe((res:Post) => {
+        //this.newPost=res,
+        //window.alert('Post update!');
+        //this.addAdminPost();
+       // this.resetForm();
+       // window.location.reload();
+     // })
+  //  }
+   // else{    //dodavanje posta
       this.form.patchValue({
         postDate:this.currentDate
       });
@@ -115,6 +115,6 @@ export class PostAddEditComponent implements OnInit {
       window.location.reload();
     })
   }
-  }
+ // }
 }
 
