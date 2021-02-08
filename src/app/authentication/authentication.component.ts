@@ -33,7 +33,7 @@ export class AuthenticationComponent implements OnInit {
       this.administratorId=data.administratorId
     }
     )
-   
+    window.location.reload();
   }
   isLogged(): boolean{
     if (JSON.parse(localStorage.getItem('currentUser')!) != null){
