@@ -79,14 +79,14 @@ export class PostAddEditComponent implements OnInit {
   get formFields() { return this.form.controls; }
   
   submitForm(){
-    let post: Post = {
-      postId:this.postId,
-      title:this.form.get(this.title)?.value,
-      content: this.form.get(this.content)?.value,
-      postDate:this.currentDate,
-      author:'',
-      administratorId:this.currentUser.administratorId
-    };
+    //let post: Post = {
+      //postId:this.postId,
+      //title:this.form.get(this.title)?.value,
+      //content: this.form.get(this.content)?.value,
+      //postDate:this.currentDate,
+      //author:'',
+      //administratorId:this.currentUser.administratorId
+    //};
    
     
     //editovanje
