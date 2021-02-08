@@ -17,11 +17,12 @@
           <form [formGroup]="form" (ngSubmit)="login()" novalidate>
             <div class="mb-3">
               <label for="username" class="col-form-label">Username:</label>
-              <input type="text" class="form-control" id="username" formControlName="username">
+              <input  type="text" class="form-control" id="username" formControlName="username">
             </div>
+          
             <div class="mb-3">
               <label for="password" class="col-form-label" >Password:</label>
-              <input type="text" class="form-control" id="password" formControlName="password">
+              <input type="text" class="form-control" id="password" formControlName="password" >
             </div>
             <button style="background-color:  rgb(134, 0, 105);" type="button" class="btn btn-danger"  type="submit">Login</button>
           </form>

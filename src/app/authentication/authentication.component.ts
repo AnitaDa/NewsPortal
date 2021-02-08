@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 import { AuthenticationService } from '../authentication.service';
 import { Post } from '../posts/post';
@@ -14,7 +15,8 @@ import { User } from './user';
 })
 export class AuthenticationComponent implements OnInit {
   form: FormGroup;
-  loginUser:User|any;
+  loginUser:User|any=null;
+  submitted=false;
   public administratorId:number;
   constructor(private formBuilder:FormBuilder,private service:AuthenticationService,private router:Router) { 
     this.form = this.formBuilder.group({
@@ -29,11 +31,11 @@ export class AuthenticationComponent implements OnInit {
     this.service.login(this.form.value)
     .subscribe((data:User)=>{
       this.loginUser=data,
-      this.administratorId=data.administratorId
+      this.administratorId=data.administratorId,
+      this.submitted=true;
     }
     )
-     console.log(this.loginUser);
-     console.log(this.administratorId);
+   
   }
   isLogged(): boolean{
     if (JSON.parse(localStorage.getItem('currentUser')!) != null){

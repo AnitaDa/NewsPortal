@@ -69,9 +69,7 @@ export class PostAddEditComponent implements OnInit {
       window.alert('AdminPost created!');
    })}
   }
-  isEdit(){
   
-  }
   isLogged(): boolean{
     if (JSON.parse(localStorage.getItem('currentUser')!) != null){
       return true;
