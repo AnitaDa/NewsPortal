@@ -15,8 +15,7 @@ import { User } from './user';
 })
 export class AuthenticationComponent implements OnInit {
   form: FormGroup;
-  loginUser:User|any=null;
-  submitted=false;
+  loginUser:User|any;
   public administratorId:number;
   constructor(private formBuilder:FormBuilder,private service:AuthenticationService,private router:Router) { 
     this.form = this.formBuilder.group({
@@ -31,8 +30,7 @@ export class AuthenticationComponent implements OnInit {
     this.service.login(this.form.value)
     .subscribe((data:User)=>{
       this.loginUser=data,
-      this.administratorId=data.administratorId,
-      this.submitted=true;
+      this.administratorId=data.administratorId
     }
     )
    
